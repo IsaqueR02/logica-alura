@@ -18,11 +18,26 @@ function sortear(){
      */
     for (let i = 0; i < quantidade; i++) {
         numero = obterNumeroAleatorio(de, ate);
+
+        /**
+         * Caso o numero seja indentificado como repetido,
+         * a estrura do 'while' será ativada e irá imprimir
+         * somente um número.
+         */
+        while (sorteados.includes(numero)) {
+            numero = obterNumeroAleatorio(de, ate)
+        }
+
         sorteados.push(numero)
     }
 
-    alert(sorteados);
+    /**
+     * Imprimi resultado abaixo
+     */
+    let resultado = document.getElementById('resultado')
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`;
 }
+
 
 /**
  * Função que irá receber os valores aléatorios que serão inseridos
